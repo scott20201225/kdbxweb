@@ -1,4 +1,5 @@
 import expect from 'expect.js';
+import { afterAll, beforeAll } from 'vitest';
 import { ByteUtils, Consts, CryptoEngine, Int64, KeyEncryptorKdf, VarDictionary } from '../../lib';
 import { ValueType } from '../../lib/utils/var-dictionary';
 
@@ -10,7 +11,7 @@ describe('KeyEncryptorKdf', () => {
 
     const cryptoEngineArgon2 = CryptoEngine.argon2;
 
-    before(() => {
+    beforeAll(() => {
         CryptoEngine.setArgon2Impl(
             (password, salt, memory, iterations, length, parallelism, type, version) => {
                 const res = new ArrayBuffer(32);
@@ -28,8 +29,8 @@ describe('KeyEncryptorKdf', () => {
         );
     });
 
-    after(() => {
-        CryptoEngine.argon2 = cryptoEngineArgon2;
+    afterAll(() => {
+        CryptoEngine.setArgon2Impl(cryptoEngineArgon2);
     });
 
     it('calls argon2 function', () => {

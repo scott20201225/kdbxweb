@@ -64,10 +64,10 @@ export class ChaCha20 {
             quarterRound(x, 2, 7, 8, 13);
             quarterRound(x, 3, 4, 9, 14);
         }
-        for (let i = 16; i--; ) {
+        for (let i = 16; i--;) {
             x[i] += input[i];
         }
-        for (let i = 16; i--; ) {
+        for (let i = 16; i--;) {
             u32to8le(block, 4 * i, x[i]);
         }
 

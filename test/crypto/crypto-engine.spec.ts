@@ -1,5 +1,6 @@
 import expect from 'expect.js';
 import { ByteUtils, CryptoEngine } from '../../lib';
+import { SubtleMockNode } from '../test-support/subtle-mock-node';
 
 const isNode = !!global.process?.versions?.node;
 
@@ -16,15 +17,21 @@ function toHex(bytes: ArrayBuffer) {
 
 function useDefaultImpl() {
     if (isNode) {
-        // @ts-ignore
-        global.crypto = undefined;
+        Object.defineProperty(globalThis, 'crypto', {
+            configurable: true,
+            value: undefined,
+            writable: true
+        });
     }
 }
 
 function useSubtleMock() {
     if (isNode) {
-        // @ts-ignore
-        global.crypto = require('../test-support/subtle-mock-node').SubtleMockNode;
+        Object.defineProperty(globalThis, 'crypto', {
+            configurable: true,
+            value: SubtleMockNode,
+            writable: true
+        });
     }
 }
 

@@ -1,4 +1,4 @@
-let SubtleMockNode;
+let SubtleMockNode: unknown;
 
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 

@@ -421,14 +421,15 @@ kdbxweb.ByteUtils.hexToBytes(str);
 ## Building
 
 > [!NOTE]
-> This project requires node v18.18.0.
+> This project requires Node.js 20.19.0 or later and pnpm 10 or later.
 
 <br />
 
-Use npm to build this project:
+Install dependencies and build:
 
 ```sh
-npm run build
+pnpm install --frozen-lockfile
+pnpm run build
 ```  
 
 <br />
@@ -436,7 +437,7 @@ npm run build
 To run tests:
 
 ```sh
-npm test
+pnpm test
 ```  
 
 <br />
@@ -464,7 +465,7 @@ The library provides a number of scripts to work with KDBX files:
 Dump the binary header:
 
 ```sh
-npm run script:dump-header my-db.kdbx
+pnpm run script:dump-header my-db.kdbx
 ```
 
 <br />
@@ -472,7 +473,7 @@ npm run script:dump-header my-db.kdbx
 Print detailed size information about internal objects:
 
 ```sh
-npm run script:kdbx-size-profiler my-db.kdbx password
+pnpm run script:kdbx-size-profiler my-db.kdbx password
 ```
 
 <br />
@@ -480,7 +481,7 @@ npm run script:kdbx-size-profiler my-db.kdbx password
 Dump the internal XML:
 
 ```sh
-npm run script:kdbx-to-xml my-db.kdbx password
+pnpm run script:kdbx-to-xml my-db.kdbx password
 ```
 
 <br />
@@ -488,7 +489,7 @@ npm run script:kdbx-to-xml my-db.kdbx password
 Generate big files for load testing:
 
 ```sh
-npm run script:make-big-files
+pnpm run script:make-big-files
 ```
 
 <br />

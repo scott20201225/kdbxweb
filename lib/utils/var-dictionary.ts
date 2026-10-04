@@ -149,7 +149,7 @@ export class VarDictionary {
     static read(stm: BinaryStream): VarDictionary {
         const dict = new VarDictionary();
         dict.readVersion(stm);
-        for (let item; (item = dict.readItem(stm)); ) {
+        for (let item; (item = dict.readItem(stm));) {
             dict._items.push(item);
             dict._map.set(item.key, item);
         }
